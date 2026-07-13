@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Fűrész Gergő – Névjegykártya</title>
+<style>
+  @font-face {
+    font-family: "BigShoulders";
+    src: url("fonts/BigShoulders-Bold.ttf") format("truetype");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "BigShoulders";
+    src: url("fonts/BigShoulders-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Outfit";
+    src: url("fonts/Outfit-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Outfit";
+    src: url("fonts/Outfit-Bold.ttf") format("truetype");
+    font-weight: 700;
+  }
+
+  :root {
+    --bg: #0a0908;
+    --ink: #f5ede6;
+    --muted: #a89a8c;
+    --ember: #d8a36d;
+    --ember-strong: #f2c08a;
+    --line: rgba(245, 237, 230, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .stage {
+    display: flex;
+    gap: 60px;
+    padding: 40px;
+  }
+
+  .card {
+    position: relative;
+    width: 1063px;
+    height: 638px;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(242,192,138,0.16), transparent 34%),
+      radial-gradient(circle at 6% 100%, rgba(216,163,109,0.10), transparent 36%),
+      linear-gradient(180deg, #0b0908 0%, #120e0c 55%, #080706 100%);
+  }
+
+  /* subtle figure watermark, back-side accent */
+  .card-front .figure-accent {
+    position: absolute;
+    right: -40px;
+    bottom: -30px;
+    width: 430px;
+    height: 700px;
+    opacity: 0.16;
+    filter: grayscale(100%) brightness(1.4);
+  }
+
+  .card-front .figure-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+
+  .card-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 56px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: "BigShoulders", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .brand-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ember-strong), var(--ember));
+    box-shadow: 0 0 24px rgba(242,192,138,0.7);
+    flex-shrink: 0;
+  }
+
+  .role {
+    margin: 12px 0 0 30px;
+    font-family: "BigShoulders", sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ember-strong);
+  }
+
+  .hairline {
+    margin: 30px 0 0;
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-item .label {
+    font-family: "BigShoulders", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact-item .value {
+    font-family: "BigShoulders", sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .contact-item .value.ember { color: var(--ember-strong); }
+
+  .qr-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .qr-frame {
+    width: 168px;
+    height: 168px;
+    padding: 10px;
+    background: var(--ink);
+    border-radius: 14px;
+    box-shadow: 0 16px 34px rgba(216,163,109,0.35);
+  }
+
+  .qr-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .qr-url {
+    font-family: "BigShoulders", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+    color: var(--ember-strong);
+  }
+
+  /* BACK CARD */
+  .card-back .back-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .card-back .brand-dot-lg {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ember-strong), var(--ember));
+    box-shadow: 0 0 40px rgba(242,192,138,0.7);
+  }
+
+  .card-back .mark {
+    font-family: "BigShoulders", sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .card-back .tag {
+    font-family: "BigShoulders", sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ember-strong);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <div class="card card-front">
+      <div class="figure-accent">
+        <img src="gergo-cutout-crop.png" alt="">
+      </div>
+      <div class="card-inner">
+        <div>
+          <div class="brand">
+            <span class="brand-dot"></span>
+            Fűrész Gergő
+          </div>
+          <p class="role">Személyi Edző &middot; Peak Gym</p>
+          <div class="hairline"></div>
+        </div>
+
+        <div class="bottom-row">
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="label">Telefon</span>
+              <span class="value ember">06 20 272 4923</span>
+            </div>
+            <div class="contact-item">
+              <span class="label">Email</span>
+              <span class="value">fureszgergo8@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="qr-block">
+            <div class="qr-frame">
+              <img src="qr-fureszgergo.png" alt="QR kód – fureszgergo.hu">
+            </div>
+            <span class="qr-url">fureszgergo.hu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-inner">
+        <span class="brand-dot-lg"></span>
+        <div class="mark">Fűrész Gergő</div>
+        <div class="tag">Discipline Builds Freedom</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "fureszgergo",
+  "private": true,
+  "scripts": {
+    "deploy": "pnpm dlx vercel deploy --prod --yes",
+    "deploy:preview": "pnpm dlx vercel deploy --yes"
+  }
+}

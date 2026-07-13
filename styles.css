@@ -1,0 +1,798 @@
+:root {
+  --bg: #0a0908;
+  --bg-soft: #151210;
+  --surface: rgba(25, 20, 17, 0.78);
+  --surface-strong: rgba(35, 28, 23, 0.9);
+  --line: rgba(255, 232, 212, 0.1);
+  --text: #f5ede6;
+  --muted: #c4b3a4;
+  --accent: #d8a36d;
+  --accent-strong: #f2c08a;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top right, rgba(242, 192, 138, 0.16), transparent 28%),
+    radial-gradient(circle at left 20%, rgba(216, 163, 109, 0.12), transparent 24%),
+    linear-gradient(180deg, #0b0908 0%, #130f0d 55%, #090807 100%);
+  color: var(--text);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1240px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+.topbar {
+  position: sticky;
+  top: 16px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(10, 9, 8, 0.72);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  box-shadow: 0 0 22px rgba(242, 192, 138, 0.7);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+}
+
+.topbar-actions a {
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.topbar-actions a:hover,
+.topbar-actions a:focus-visible {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.call-pill {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(216, 163, 109, 0.22), rgba(242, 192, 138, 0.08));
+  border: 1px solid rgba(242, 192, 138, 0.25);
+  color: var(--text);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 32px;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: 24px 0 32px;
+}
+
+.eyebrow,
+.trust-label,
+.motto-label {
+  margin: 0 0 14px;
+  color: var(--accent-strong);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+.section h2 {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 8ch;
+  font-size: clamp(4rem, 10vw, 7.8rem);
+}
+
+.hero-text,
+.section-heading p,
+.service-card p,
+.timeline-item p,
+.contact-section p,
+.trust-strip p:last-child {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-text {
+  max-width: 620px;
+  margin: 20px 0 0;
+  font-size: 1.08rem;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  color: #1e1209;
+  box-shadow: 0 18px 40px rgba(216, 163, 109, 0.28);
+}
+
+.button-secondary {
+  border-color: rgba(242, 192, 138, 0.24);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hero-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.point-card,
+.service-card,
+.motto-card,
+.contact-card,
+.trust-strip,
+.timeline-item {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.point-card {
+  padding: 18px;
+  border-radius: 24px;
+}
+
+.point-card span,
+.timeline-item span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  color: #20140d;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  font-weight: 800;
+}
+
+.point-card strong,
+.service-card h3,
+.timeline-item h3,
+.contact-row strong {
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+
+.hero-visual {
+  position: relative;
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 36px;
+  border: 1px solid rgba(242, 192, 138, 0.16);
+  box-shadow: var(--shadow);
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 9, 8, 0) 50%, rgba(10, 9, 8, 0.22) 100%);
+  pointer-events: none;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.motto-card {
+  position: absolute;
+  right: -18px;
+  bottom: 28px;
+  width: min(280px, calc(100% - 36px));
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(15, 12, 10, 0.88);
+}
+
+.motto-text {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 22px;
+  border-radius: 28px;
+}
+
+.trust-strip p {
+  margin: 0;
+}
+
+.section {
+  padding: 96px 0 24px;
+}
+
+.section-heading {
+  max-width: 800px;
+  margin-bottom: 28px;
+}
+
+.section h2 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  max-width: 11ch;
+}
+
+.section-heading.narrow h2 {
+  max-width: 12ch;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.service-card {
+  padding: 24px;
+  border-radius: 26px;
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(242, 192, 138, 0.28);
+}
+
+.service-card h3 {
+  margin: 0 0 12px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.service-card p {
+  margin: 0;
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 26px;
+}
+
+.timeline-item span {
+  margin: 0;
+}
+
+.timeline-item h3 {
+  margin: 0 0 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.timeline-item p {
+  margin: 0;
+}
+
+.quote-band {
+  padding: 44px 28px;
+  margin-top: 84px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(216, 163, 109, 0.08), rgba(255, 255, 255, 0.02), rgba(216, 163, 109, 0.08));
+}
+
+.quote-band p {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.booking-section {
+  padding-top: 86px;
+}
+
+.booking-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.48fr);
+  gap: 28px;
+  align-items: end;
+  max-width: none;
+}
+
+.booking-heading .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: -12px;
+}
+
+.booking-heading p:last-child {
+  margin: 0;
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.calendar-panel,
+.booking-form {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.calendar-panel {
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.calendar-toolbar {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.calendar-label,
+.booking-form-label {
+  margin: 0 0 4px;
+  color: var(--accent-strong);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.calendar-toolbar h3 {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.calendar-nav {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(242, 192, 138, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.calendar-nav:hover,
+.calendar-nav:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(242, 192, 138, 0.12);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(104px, 1fr));
+  gap: 1px;
+  overflow-x: auto;
+  background: var(--line);
+}
+
+.calendar-day {
+  min-width: 104px;
+  background: rgba(10, 9, 8, 0.84);
+}
+
+.calendar-day-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 14px 10px;
+  background: rgba(20, 16, 13, 0.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.calendar-day-header strong {
+  display: block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.calendar-day-header span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.slot-button {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.slot-button:hover,
+.slot-button:focus-visible {
+  background: rgba(242, 192, 138, 0.12);
+}
+
+.slot-button.is-selected {
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  color: #1e1209;
+}
+
+.slot-button.is-booked,
+.slot-button.is-past {
+  color: rgba(245, 237, 230, 0.35);
+  background: rgba(255, 255, 255, 0.015);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.available {
+  background: var(--text);
+}
+
+.legend-dot.selected {
+  background: var(--accent-strong);
+}
+
+.legend-dot.booked {
+  background: rgba(245, 237, 230, 0.35);
+}
+
+.booking-form {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 28px;
+  background: var(--surface-strong);
+}
+
+.booking-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.booking-form input,
+.booking-form textarea {
+  width: 100%;
+  border: 1px solid rgba(242, 192, 138, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text);
+  font: inherit;
+  padding: 14px 15px;
+  outline: none;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  border-color: rgba(242, 192, 138, 0.56);
+  box-shadow: 0 0 0 4px rgba(242, 192, 138, 0.08);
+}
+
+.booking-form textarea {
+  resize: vertical;
+}
+
+.booking-form button {
+  width: 100%;
+}
+
+.booking-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+  gap: 28px;
+  align-items: end;
+}
+
+.contact-card {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 28px;
+  background: var(--surface-strong);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.contact-row:hover,
+.contact-row:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-row span {
+  color: var(--muted);
+}
+
+.contact-row.static:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.footer {
+  padding-top: 48px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .split-section,
+  .contact-section,
+  .booking-heading,
+  .booking-layout,
+  .service-grid,
+  .hero-points,
+  .trust-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .section h2,
+  .hero h1 {
+    max-width: none;
+  }
+
+  .motto-card {
+    right: 18px;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 24px, 1240px);
+    padding-top: 16px;
+  }
+
+  .topbar {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 28px;
+  }
+
+  .topbar-actions {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 18vw, 5.2rem);
+  }
+
+  .section h2 {
+    font-size: clamp(2.5rem, 14vw, 4rem);
+  }
+
+  .button,
+  .contact-row {
+    width: 100%;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .motto-card {
+    position: static;
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .calendar-toolbar {
+    grid-template-columns: 42px 1fr 42px;
+    padding: 16px;
+  }
+
+  .calendar-nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .calendar-toolbar h3 {
+    font-size: 1.45rem;
+  }
+
+  .quote-band {
+    padding: 30px 18px;
+    margin-top: 64px;
+  }
+
+  .contact-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
