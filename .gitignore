@@ -1,3 +1,5 @@
 .vercel
+.cloudflare-dist
+.wrangler
 node_modules
 mobile-*.png
