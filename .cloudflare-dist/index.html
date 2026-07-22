@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d0c0b">
+  <title>FORGE — Edzői rendszer</title>
+  <meta name="description" content="Személyi edzői ügyfél-, edzésterv- és fejlődéskezelő rendszer.">
+  <link rel="stylesheet" href="styles.css?v=20260714-3">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M21 21l-1-1M4 4 3 3M18 5l1-1 1 1-1 1M5 18l-1 1 1 1 1-1M14 9l-5 5M7 5 5 12M17 7 5 12"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 3 3 5-7"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-2.83 2.83-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21h-4v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06-2.83-2.83.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3v-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06 2.83-2.83.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3h4v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06 2.83 2.83-.06.06A1.65 1.65 0 0 0 19.4 9c.12.61.72 1 1.34 1H21v4h-.26c-.62 0-1.22.39-1.34 1Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 7-3 9h18c0-2-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 7-8M15 7h5v5"/></symbol>
+    <symbol id="i-weight" viewBox="0 0 24 24"><path d="M7 8a5 5 0 0 1 10 0M5 8h14l2 13H3Z"/><path d="M12 8l2-3"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-dot"></span><div><strong>FORGE</strong><small>COACHING SYSTEM</small></div></div>
+      <nav class="primary-nav" aria-label="Fő navigáció">
+        <button class="nav-item active" data-view="dashboard"><svg><use href="#i-grid"/></svg><span>Áttekintés</span></button>
+        <button class="nav-item" data-view="clients"><svg><use href="#i-users"/></svg><span>Edzettek</span><b id="clientNavCount">6</b></button>
+        <button class="nav-item" data-view="calendar"><svg><use href="#i-calendar"/></svg><span>Naptár</span></button>
+        <button class="nav-item" data-view="plans"><svg><use href="#i-dumbbell"/></svg><span>Edzéstervek</span></button>
+        <button class="nav-item" data-view="progress"><svg><use href="#i-chart"/></svg><span>Fejlődés</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item"><svg><use href="#i-settings"/></svg><span>Beállítások</span></button>
+        <div class="coach-card">
+          <img src="gergo-hero.png" alt="Fűrész Gergő">
+          <div><strong>Fűrész Gergő</strong><small>Személyi edző</small></div>
+          <button class="icon-btn" aria-label="További lehetőségek"><svg><use href="#i-more"/></svg></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="mobileMenu" aria-label="Menü megnyitása"><svg><use href="#i-menu"/></svg></button>
+        <div class="page-title"><p id="eyebrow">2026. JÚLIUS 14. • KEDD</p><h1 id="pageTitle">Jó reggelt, Gergő!</h1></div>
+        <div class="top-actions">
+          <label class="global-search"><svg><use href="#i-search"/></svg><input id="globalSearch" type="search" placeholder="Keresés..." aria-label="Keresés"></label>
+          <button class="icon-btn notification" aria-label="Értesítések"><svg><use href="#i-bell"/></svg><span></span></button>
+          <button class="avatar-button" aria-label="Profil"><img src="gergo-hero.png" alt=""></button>
+        </div>
+      </header>
+
+      <button class="active-workout-banner" id="activeWorkoutBanner" type="button" hidden>
+        <span class="live-label"><span></span>FOLYAMATBAN LÉVŐ EDZÉS</span>
+        <strong id="activeWorkoutName">Push A • Kovács Márk</strong>
+        <span id="activeWorkoutSummary">0 / 14 sorozat</span>
+        <span class="resume-cta">Folytatás <svg><use href="#i-arrow"/></svg></span>
+      </button>
+
+      <section class="view active" id="dashboardView" data-view-name="dashboard">
+        <div class="status-strip"><span class="status-pulse"></span><strong>A rendszer naprakész</strong><span>Utolsó szinkronizálás: 2 perce</span><button data-view="calendar">Mai nap megnyitása <svg><use href="#i-arrow"/></svg></button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon"><svg><use href="#i-users"/></svg></span><span class="change positive">Dummy adatbázis</span></div><strong class="stat-number" id="activeClientStat">6</strong><p>Aktív edzett</p><div class="mini-bars"><i style="height:25%"></i><i style="height:40%"></i><i style="height:35%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:72%"></i><i class="hot" style="height:85%"></i></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon"><svg><use href="#i-calendar"/></svg></span><span class="change">Ezen a héten</span></div><strong class="stat-number">28</strong><p>Tervezett edzés</p><div class="stat-progress"><span style="width:68%"></span></div><small>19 teljesítve • 9 hátra</small></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon"><svg><use href="#i-clock"/></svg></span><span class="change positive">+8%</span></div><strong class="stat-number">84%</strong><p>Heti teljesítés</p><div class="ring" style="--p:84"><b>84</b></div></article>
+          <article class="stat-card accent-card"><div class="stat-top"><span class="stat-icon dark"><svg><use href="#i-trend"/></svg></span><span class="change dark">Július</span></div><strong class="stat-number">+14,2%</strong><p>Átlagos erőnövekedés</p><small>Az előző hónaphoz képest</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel schedule-panel">
+            <div class="panel-heading"><div><span class="section-kicker">MAI PROGRAM</span><h2>5 edzés vár rád</h2></div><button class="text-btn" data-view="calendar">Teljes naptár <svg><use href="#i-arrow"/></svg></button></div>
+            <div class="timeline">
+              <div class="session done"><time>07:00</time><div class="timeline-mark"><span><svg><use href="#i-check"/></svg></span></div><div class="session-body"><div class="client-avatar mint">NF</div><div><strong>Nagy Fanni</strong><p>Alsótest • 52 perc</p></div><em>Teljesítve</em></div></div>
+              <div class="session active"><time>16:00</time><div class="timeline-mark"><span></span></div><div class="session-body"><div class="client-avatar peach">KM</div><div><strong>Kovács Márk</strong><p>Push A • Mell, váll, tricepsz</p></div><button class="primary-button compact" data-start-workout><svg><use href="#i-play"/></svg> Edzés indítása</button></div></div>
+              <div class="session"><time>17:30</time><div class="timeline-mark"><span></span></div><div class="session-body"><div class="client-avatar violet">SL</div><div><strong>Szabó Luca</strong><p>Teljes test • 60 perc</p></div><em>17:30–18:30</em></div></div>
+              <div class="session"><time>19:00</time><div class="timeline-mark"><span></span></div><div class="session-body"><div class="client-avatar blue">BT</div><div><strong>Balogh Tamás</strong><p>Pull B • Hát, bicepsz</p></div><em>19:00–20:00</em></div></div>
+            </div>
+          </article>
+
+          <article class="panel next-panel">
+            <div class="live-label"><span></span>KÖVETKEZŐ EDZÉS</div>
+            <div class="next-time"><strong>16:00</strong><span>48 perc múlva</span></div>
+            <div class="next-client"><div class="client-avatar peach large">KM</div><div><h3>Kovács Márk</h3><p>Push A • 4. hét</p></div></div>
+            <div class="workout-preview"><div><span>GYAKORLAT</span><span>SOROZAT</span></div><p><b>Fekvenyomás</b><em>4 × 8</em></p><p><b>Ferdepados nyomás</b><em>3 × 10</em></p><p><b>Oldalemelés</b><em>4 × 12</em></p><p><b>Tricepsz letolás</b><em>3 × 12</em></p></div>
+            <button class="primary-button full" data-start-workout><svg><use href="#i-play"/></svg> Élő edzés indítása</button>
+            <button class="secondary-button full" data-open-plan>Terv gyors szerkesztése</button>
+          </article>
+        </div>
+
+        <div class="lower-grid">
+          <article class="panel clients-panel"><div class="panel-heading"><div><span class="section-kicker">EDZETTEK</span><h2>Legutóbbi aktivitás</h2></div><button class="text-btn" data-view="clients">Összes edzett <svg><use href="#i-arrow"/></svg></button></div><div id="recentClients" class="client-list"></div></article>
+          <article class="panel progress-panel"><div class="panel-heading"><div><span class="section-kicker">FEJLŐDÉS</span><h2>Heti terhelés</h2></div><select aria-label="Időszak"><option>Elmúlt 8 hét</option><option>Elmúlt 4 hét</option></select></div><div class="chart-summary"><strong>36 480 kg</strong><span class="change positive">↗ 12,4%</span></div><p>Összes mozgatott súly</p><div class="bar-chart" aria-label="Heti terhelés oszlopdiagram"><div><i style="height:42%"></i><span>22.</span></div><div><i style="height:51%"></i><span>23.</span></div><div><i style="height:47%"></i><span>24.</span></div><div><i style="height:66%"></i><span>25.</span></div><div><i style="height:63%"></i><span>26.</span></div><div><i style="height:76%"></i><span>27.</span></div><div><i style="height:71%"></i><span>28.</span></div><div><i class="current" style="height:90%"></i><span>29.</span></div></div></article>
+        </div>
+      </section>
+
+      <section class="view" id="clientsView" data-view-name="clients">
+        <div class="view-toolbar"><div><span class="section-kicker">ÜGYFÉLBÁZIS</span><h2>Edzettek</h2><p>Minden fontos adat, terv és eredmény egy helyen.</p></div><button class="primary-button" id="addClientBtn"><svg><use href="#i-plus"/></svg> Új edzett</button></div>
+        <div class="filter-bar"><label><svg><use href="#i-search"/></svg><input id="clientSearch" type="search" placeholder="Keresés név vagy cél alapján..."></label><div class="filter-chips"><button class="active" data-filter="all">Mind <span>12</span></button><button data-filter="active">Aktív <span>10</span></button><button data-filter="attention">Figyelmet kér <span>2</span></button></div><select id="clientSort"><option value="recent">Legutóbbi aktivitás</option><option value="name">Név szerint</option><option value="progress">Fejlődés szerint</option></select></div>
+        <div class="client-grid" id="clientGrid"></div>
+      </section>
+
+      <section class="view" id="clientDetailView" data-view-name="clientDetail">
+        <div id="clientProfile"></div>
+      </section>
+
+      <section class="view" id="calendarView" data-view-name="calendar">
+        <div class="view-toolbar"><div><span class="section-kicker">IDŐBEOSZTÁS</span><h2>Heti naptár</h2><p>Tervezd meg a hetet, és indítsd innen az edzéseket.</p></div><button class="primary-button" id="newSessionBtn"><svg><use href="#i-plus"/></svg> Új időpont</button></div>
+        <div class="calendar-toolbar"><div class="calendar-nav"><button class="icon-btn" id="prevWeek">‹</button><button class="secondary-button" id="todayBtn">Ma</button><button class="icon-btn" id="nextWeek">›</button><h3 id="weekLabel">Július 13–19.</h3></div><div class="week-stats"><span><b>28</b> edzés</span><span><b>19</b> teljesítve</span></div></div>
+        <div class="week-calendar" id="weekCalendar"></div>
+      </section>
+
+      <section class="view" id="plansView" data-view-name="plans">
+        <div class="view-toolbar"><div><span class="section-kicker">PROGRAMOZÁS</span><h2>Edzéstervek</h2><p>Újrahasználható sablonok és személyre szabott programok.</p></div><button class="primary-button" data-open-plan><svg><use href="#i-plus"/></svg> Új edzésterv</button></div>
+        <div class="plan-stats"><div><span>AKTÍV PROGRAMOK</span><strong>10</strong><small>2 frissítésre vár</small></div><div><span>SABLONOK</span><strong>8</strong><small>Push / Pull / Legs + egyedi</small></div><div><span>HETI GYAKORLAT</span><strong>146</strong><small>12 edzettre kiosztva</small></div></div>
+        <div class="plan-layout"><div class="panel plan-table-panel"><div class="panel-heading"><div><span class="section-kicker">PROGRAMOK</span><h2>Aktív edzéstervek</h2></div><label class="small-search"><svg><use href="#i-search"/></svg><input id="planSearch" placeholder="Terv keresése..."></label></div><div class="plan-table" id="planTable"></div></div><aside class="panel template-panel"><span class="section-kicker">GYORS KEZDÉS</span><h2>Sablonkönyvtár</h2><p>Indulj egy bevált struktúrából, majd szabd személyre.</p><div class="template-card"><span class="template-icon">P</span><div><strong>Push / Pull / Legs</strong><small>6 nap • Haladó</small></div><button class="icon-btn"><svg><use href="#i-copy"/></svg></button></div><div class="template-card"><span class="template-icon">F</span><div><strong>Full body</strong><small>3 nap • Kezdő</small></div><button class="icon-btn"><svg><use href="#i-copy"/></svg></button></div><div class="template-card"><span class="template-icon">U</span><div><strong>Upper / Lower</strong><small>4 nap • Középhaladó</small></div><button class="icon-btn"><svg><use href="#i-copy"/></svg></button></div></aside></div>
+      </section>
+
+      <section class="view" id="progressView" data-view-name="progress">
+        <div class="view-toolbar"><div><span class="section-kicker">EREDMÉNYEK</span><h2>Fejlődés</h2><p>Lásd időben, mi működik, és hol kell változtatni.</p></div><div class="toolbar-actions"><select id="progressClient"><option>Kovács Márk</option><option>Nagy Fanni</option><option>Szabó Luca</option></select><select><option>Elmúlt 12 hét</option><option>Elmúlt 6 hónap</option></select></div></div>
+        <div class="progress-hero"><div><span class="section-kicker">KOVÁCS MÁRK • 12 HETES ÖSSZEGZÉS</span><h2>A következetesség látszik.</h2><p>Az edzések 89%-át teljesítette, miközben a három fő emelés átlaga 16,8%-kal nőtt.</p><div class="progress-highlights"><span><b>89%</b>teljesítés</span><span><b>+16,8%</b>erőszint</span><span><b>-3,2 kg</b>testsúly</span></div></div><div class="progress-photo"><img src="gergo-hero.png" alt="Edző a teremben"></div></div>
+        <div class="metric-grid"><article class="panel metric-chart"><div class="panel-heading"><div><span class="section-kicker">ERŐSZINT</span><h2>Fekvenyomás 1RM</h2></div><strong class="metric-value">92,5 <small>kg</small></strong></div><div class="line-chart"><svg viewBox="0 0 600 190" preserveAspectRatio="none"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7ad74" stop-opacity=".3"/><stop offset="1" stop-color="#e7ad74" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 160 C60 150 80 145 120 142 S200 132 240 112 S320 125 360 92 S430 82 470 64 S540 58 600 30 L600 190 L0 190Z"/><path class="line" d="M0 160 C60 150 80 145 120 142 S200 132 240 112 S320 125 360 92 S430 82 470 64 S540 58 600 30"/></svg><div class="chart-axis"><span>ÁPR 21.</span><span>MÁJ 19.</span><span>JÚN 16.</span><span>JÚL 13.</span></div></div></article><article class="panel body-metrics"><span class="section-kicker">TESTÖSSZETÉTEL</span><h2>Aktuális állapot</h2><div class="body-metric"><span><svg><use href="#i-weight"/></svg></span><div><small>Testsúly</small><strong>83,6 kg</strong></div><em class="positive">−3,2 kg</em></div><div class="body-metric"><span><svg><use href="#i-trend"/></svg></span><div><small>Testzsír</small><strong>16,8%</strong></div><em class="positive">−2,4%</em></div><div class="body-metric"><span><svg><use href="#i-dumbbell"/></svg></span><div><small>Izomtömeg</small><strong>38,9 kg</strong></div><em class="positive">+1,1 kg</em></div><button class="secondary-button full">Új mérés rögzítése</button></article></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="clientModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="clientModalTitle"><button class="icon-btn modal-close" data-close-modal aria-label="Bezárás"><svg><use href="#i-close"/></svg></button><span class="section-kicker">ÚJ PROFIL</span><h2 id="clientModalTitle">Edzett hozzáadása</h2><p>Az alapadatokat később bármikor kiegészítheted.</p><form id="clientForm"><div class="form-grid"><label><span>Teljes név</span><input name="name" required placeholder="pl. Tóth Anna"></label><label><span>Email</span><input name="email" type="email" required placeholder="anna@email.hu"></label><label><span>Telefonszám</span><input name="phone" type="tel" placeholder="+36 30 123 4567"></label><label><span>Elsődleges cél</span><select name="goal"><option>Izomépítés</option><option>Fogyás</option><option>Erőnövelés</option><option>Általános fittség</option></select></label><label><span>Heti edzésszám</span><select name="frequency"><option>2 alkalom</option><option selected>3 alkalom</option><option>4 alkalom</option><option>5+ alkalom</option></select></label><label><span>Kezdés dátuma</span><input name="start" type="date" value="2026-07-13"></label></div><label class="full-label"><span>Megjegyzés</span><textarea name="note" rows="3" placeholder="Sérülés, előzmény, preferencia..."></textarea></label><div class="modal-actions"><button type="button" class="secondary-button" data-close-modal>Mégse</button><button type="submit" class="primary-button">Edzett létrehozása <svg><use href="#i-arrow"/></svg></button></div></form></div></div>
+
+  <div class="modal-backdrop workout-backdrop" id="workoutModal" aria-hidden="true"><div class="workout-modal" role="dialog" aria-modal="true" aria-labelledby="workoutTitle"><header class="workout-header"><div><span class="live-label"><span></span>ÉLŐ EDZÉS • AUTOMATIKUS MENTÉS</span><h2 id="workoutTitle">Push A</h2><p id="workoutSubtitle">Kovács Márk • 4. hét</p></div><div class="workout-timer"><span>ELTELT IDŐ</span><strong id="workoutTimer">00:00</strong></div><button class="icon-btn" data-close-workout aria-label="Edzés minimalizálása" title="Minimalizálás — az edzés folytatódik"><svg><use href="#i-close"/></svg></button></header><div class="workout-progress"><span id="workoutProgress" style="width:0%"></span></div><div class="workout-content"><div class="workout-meta"><span><b id="exerciseCount">4</b> gyakorlat</span><span><b id="completedSets">0 / 14</b> sorozat</span><span><b id="totalVolume">0 kg</b> volumen</span><span><b id="workoutSaveState">Mentve</b> állapot</span></div><label class="workout-note"><span>EDZÉSJEGYZET</span><textarea id="workoutNote" rows="2" placeholder="Technika, fájdalom, terhelés vagy következő alkalom megjegyzése..."></textarea></label><div class="exercise-list" id="exerciseList"></div><button class="add-exercise" id="addWorkoutExercise"><svg><use href="#i-plus"/></svg> Kiegészítő gyakorlat hozzáadása</button></div><footer class="workout-footer"><div><span class="status-pulse"></span><p id="workoutFooterState">Az edzés minimalizálható és bármikor folytatható.</p></div><button class="primary-button" id="finishWorkout">Edzés lezárása <svg><use href="#i-check"/></svg></button></footer></div></div>
+
+  <div class="modal-backdrop confirm-backdrop" id="finishConfirmModal" aria-hidden="true"><div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="finishConfirmTitle"><span class="confirm-icon"><svg><use href="#i-check"/></svg></span><span class="section-kicker">EDZÉS LEZÁRÁSA</span><h2 id="finishConfirmTitle">Biztosan befejezed?</h2><p id="finishConfirmText">A még nem teljesített sorozatok kimaradtként kerülnek mentésre.</p><div class="finish-summary" id="finishConfirmSummary"></div><div class="modal-actions"><button class="secondary-button" id="cancelFinishWorkout">Folytatom az edzést</button><button class="primary-button danger-confirm" id="confirmFinishWorkout">Igen, edzés lezárása</button></div></div></div>
+
+  <div class="modal-backdrop" id="planModal" aria-hidden="true"><div class="modal plan-modal"><button class="icon-btn modal-close" data-close-modal aria-label="Bezárás"><svg><use href="#i-close"/></svg></button><span class="section-kicker">TERVSZERKESZTŐ</span><h2>Push A • Kovács Márk</h2><p>Gyors módosítás a következő edzés előtt.</p><div class="quick-plan"><div><span class="drag">⠿</span><b>Fekvenyomás</b><span>4 × 8</span><em>80 kg</em><button class="icon-btn"><svg><use href="#i-more"/></svg></button></div><div><span class="drag">⠿</span><b>Ferdepados nyomás</b><span>3 × 10</span><em>28 kg</em><button class="icon-btn"><svg><use href="#i-more"/></svg></button></div><div><span class="drag">⠿</span><b>Oldalemelés</b><span>4 × 12</span><em>10 kg</em><button class="icon-btn"><svg><use href="#i-more"/></svg></button></div><div><span class="drag">⠿</span><b>Tricepsz letolás</b><span>3 × 12</span><em>32 kg</em><button class="icon-btn"><svg><use href="#i-more"/></svg></button></div></div><button class="add-exercise"><svg><use href="#i-plus"/></svg> Gyakorlat hozzáadása</button><div class="modal-actions"><button class="secondary-button" data-close-modal>Mégse</button><button class="primary-button" id="savePlan">Módosítások mentése</button></div></div></div>
+
+  <div class="modal-backdrop" id="measurementModal" aria-hidden="true"><div class="modal"><button class="icon-btn modal-close" data-close-modal aria-label="Bezárás"><svg><use href="#i-close"/></svg></button><span class="section-kicker">ÁLLAPOTFELMÉRÉS</span><h2>Új mérés rögzítése</h2><p>Az új értékek azonnal bekerülnek az edzett statisztikáiba.</p><form id="measurementForm"><div class="form-grid"><label><span>Dátum</span><input name="date" type="date" value="2026-07-14" required></label><label><span>Testsúly (kg)</span><input name="weight" type="number" step="0.1" required placeholder="83.6"></label><label><span>Testzsír (%)</span><input name="bodyFat" type="number" step="0.1" placeholder="16.8"></label><label><span>Derék (cm)</span><input name="waist" type="number" step="0.1" placeholder="86"></label></div><label class="full-label"><span>Megjegyzés</span><textarea name="note" rows="2" placeholder="Körülmények, közérzet, fotózás..."></textarea></label><div class="modal-actions"><button type="button" class="secondary-button" data-close-modal>Mégse</button><button class="primary-button" type="submit">Mérés mentése</button></div></form></div></div>
+
+  <div class="modal-backdrop" id="sessionModal" aria-hidden="true"><div class="modal"><button class="icon-btn modal-close" data-close-modal aria-label="Bezárás"><svg><use href="#i-close"/></svg></button><span class="section-kicker">IDŐPONT</span><h2>Edzés ütemezése</h2><p>Az időpont megjelenik az edzett profilján és a heti tervben.</p><form id="sessionForm"><input type="hidden" name="clientId"><div class="form-grid"><label><span>Dátum</span><input name="date" type="date" value="2026-07-16" required></label><label><span>Kezdés</span><input name="time" type="time" value="16:00" required></label><label><span>Edzéstípus</span><select name="workout"><option>Push A</option><option>Pull B</option><option>Legs A</option><option>Full body</option><option>Állapotfelmérés</option></select></label><label><span>Időtartam</span><select name="duration"><option value="60">60 perc</option><option value="45">45 perc</option><option value="75">75 perc</option><option value="90">90 perc</option></select></label></div><label class="full-label"><span>Edzői megjegyzés</span><textarea name="note" rows="2" placeholder="Fókusz, módosítás vagy emlékeztető..."></textarea></label><div class="modal-actions"><button type="button" class="secondary-button" data-close-modal>Mégse</button><button class="primary-button" type="submit">Időpont mentése</button></div></form></div></div>
+
+  <div class="toast" id="toast"><span><svg><use href="#i-check"/></svg></span><div><strong>Sikeres mentés</strong><p>A módosítások rögzítve.</p></div></div>
+  <script src="script.js?v=20260714-3"></script>
+</body>
+</html>
